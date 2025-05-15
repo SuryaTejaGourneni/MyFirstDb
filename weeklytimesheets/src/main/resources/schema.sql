@@ -1,4 +1,4 @@
-CREATE TABLE timesheet (
+CREATE TABLE weeklytimesheets (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     employee_id BIGINT NOT NULL,
     project_id BIGINT NOT NULL,

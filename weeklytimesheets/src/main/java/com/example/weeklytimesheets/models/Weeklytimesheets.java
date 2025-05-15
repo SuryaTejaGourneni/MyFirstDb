@@ -20,8 +20,6 @@ public class Weeklytimesheets {
     private LocalDate workDate;
     private Double hoursWorked;
 
-    public Weeklytimesheets() {}
-
     public Weeklytimesheets(Long employeeId, Long projectId, LocalDate workDate, Double hoursWorked) {
     this.employeeId = employeeId;
     this.projectId = projectId;

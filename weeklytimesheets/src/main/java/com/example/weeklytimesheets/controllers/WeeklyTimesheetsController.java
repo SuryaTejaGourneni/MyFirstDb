@@ -21,10 +21,15 @@ public class WeeklyTimesheetsController {
 
     @Autowired
     private WeeklyTimesheetRepository timesheetRepo;
+    private WeeklyTimesheetsService timesheetService;
 
     @PostMapping
     public Weeklytimesheets logHours(@RequestBody Weeklytimesheets timesheet) {
         return timesheetRepo.save(timesheet);
+    }
+
+    public ResponseEntity<Weeklytimesheets> createTimesheet(@RequestBody Weeklytimesheets timesheet){
+        return ResponseEntity.ok(WeeklyTimeSheetsService.saveTimesheet(Weeklytimesheets));
     }
 
     @GetMapping("/{employeeId}/week")
@@ -36,5 +41,8 @@ public class WeeklyTimesheetsController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return timesheetRepo.findByEmployeeIdAndWorkDateBetween(employeeId, startDate, endDate);
+    }
+    public ResponseEntity<List<Weeklytimesheets>> getTimesheet(){
+        return ResponseEntity.ok(weeklytimesheetService.getAllTimesheet());
     }
 } 
