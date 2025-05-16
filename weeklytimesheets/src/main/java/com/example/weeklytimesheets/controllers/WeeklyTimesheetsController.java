@@ -17,24 +17,29 @@ public class WeeklyTimesheetsController {
     @Autowired
     private WeeklyTimesheetsService timesheetService;
 
+    
     @PostMapping
     public ResponseEntity<Weeklytimesheets> createTimesheet(@RequestBody Weeklytimesheets timesheet) {
-        return ResponseEntity.ok(timesheetService.saveTimesheet(timesheet));
+        Weeklytimesheets saved = timesheetService.saveTimesheet(timesheet);
+        return ResponseEntity.ok(saved);
     }
 
+    
     @GetMapping("/{employeeId}/week")
     public ResponseEntity<List<Weeklytimesheets>> getWeekTimesheet(
-        @PathVariable Long employeeId,
-        @RequestParam("start") String start,
-        @RequestParam("end") String end) {
+            @PathVariable Long employeeId,
+            @RequestParam("start") String start,
+            @RequestParam("end") String end) {
 
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
-        return ResponseEntity.ok(timesheetService.findByEmployeeIdAndWorkDateBetween(employeeId, startDate, endDate));
+        List<Weeklytimesheets> timesheets = timesheetService.findByEmployeeIdAndWorkDateBetween(employeeId, startDate, endDate);
+        return ResponseEntity.ok(timesheets);
     }
 
+    
     @GetMapping
-    public ResponseEntity<List<Weeklytimesheets>> getTimesheets() {
-        return ResponseEntity.ok(timesheetService.getAllTimesheets());
+    public ResponseEntity<List<Weeklytimesheets>> getTimesheet() {
+        return ResponseEntity.ok(timesheetService.getAllTimesheet());
     }
 }
