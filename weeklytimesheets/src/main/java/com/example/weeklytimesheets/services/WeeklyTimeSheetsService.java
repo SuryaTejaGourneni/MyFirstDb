@@ -24,4 +24,8 @@ public class WeeklyTimesheetsService {
     public List<Weeklytimesheets> findByEmployeeIdAndWorkDateBetween(Long employeeId, LocalDate start, LocalDate end) {
         return timesheetRepo.findByEmployeeIdAndWorkDateBetween(employeeId, start, end);
     }
+
+    public List<Weeklytimesheets> findTimesheetsForWeek(Long employeeId, LocalDate start, LocalDate end) {
+        return timesheetRepo.findByEmployeeIdAndWorkDateBetween(employeeId, start, end);
+    }
 }

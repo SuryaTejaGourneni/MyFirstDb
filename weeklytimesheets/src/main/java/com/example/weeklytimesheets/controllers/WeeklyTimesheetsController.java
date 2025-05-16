@@ -5,13 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.weeklytimesheets.models.Weeklytimesheets;
 import com.example.weeklytimesheets.services.WeeklyTimesheetsService;
@@ -26,7 +20,7 @@ public class WeeklyTimesheetsController {
     
     @PostMapping
     public ResponseEntity<Weeklytimesheets> createTimesheet(@RequestBody Weeklytimesheets timesheet) {
-        Weeklytimesheets saved = timesheetService.saveTimesheets(timesheet);
+        Weeklytimesheets saved = timesheetService.saveTimesheets(timesheet); 
         return ResponseEntity.ok(saved);
     }
 
@@ -39,13 +33,13 @@ public class WeeklyTimesheetsController {
 
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
-        List<Weeklytimesheets> timesheets = timesheetService.findByEmployeeIdAndWorkDateBetween(employeeId, startDate, endDate);
-        return ResponseEntity.ok(timesheets);
+
+        return ResponseEntity.ok(timesheetService.findTimesheetsForWeek(employeeId, startDate, endDate));
     }
 
-    
+
     @GetMapping
-    public ResponseEntity<List<Weeklytimesheets>> getTimesheet() {
+    public ResponseEntity<List<Weeklytimesheets>> getTimesheets() {  
         return ResponseEntity.ok(timesheetService.getAllTimesheets());
     }
 }
