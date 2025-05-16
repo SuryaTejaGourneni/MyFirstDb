@@ -11,4 +11,6 @@ import com.example.weeklytimesheets.models.Weeklytimesheets;
 @Repository
 public interface WeeklyTimesheetRepository extends JpaRepository<Weeklytimesheets, Long> {
     List<Weeklytimesheets> findByEmployeeIdAndWorkDateBetween(Long employeeId, LocalDate startDate, LocalDate endDate);
+
+    Weeklytimesheets save(WeeklyTimesheetRepository timesheetRepo);
 }

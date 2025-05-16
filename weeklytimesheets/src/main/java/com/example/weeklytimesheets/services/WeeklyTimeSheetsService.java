@@ -18,7 +18,7 @@ public class WeeklyTimesheetsService {
     }
 
     public Weeklytimesheets saveTimesheets(Weeklytimesheets Weeklytimesheets){
-        return timesheetRepo.save(timesheet);
+        return timesheetRepo.save(timesheetRepo);
     }
 
     public List<Weeklytimesheets> findByEmployeeIdAndWorkDateBetween(Long employeeId, LocalDate start, LocalDate end) {

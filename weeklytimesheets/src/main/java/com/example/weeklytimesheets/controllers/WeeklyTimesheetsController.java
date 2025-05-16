@@ -20,7 +20,7 @@ public class WeeklyTimesheetsController {
     
     @PostMapping
     public ResponseEntity<Weeklytimesheets> createTimesheet(@RequestBody Weeklytimesheets timesheet) {
-        Weeklytimesheets saved = timesheetService.saveTimesheet(timesheet);
+        Weeklytimesheets saved = timesheetService.saveTimesheets(timesheet);
         return ResponseEntity.ok(saved);
     }
 
@@ -40,6 +40,6 @@ public class WeeklyTimesheetsController {
     
     @GetMapping
     public ResponseEntity<List<Weeklytimesheets>> getTimesheet() {
-        return ResponseEntity.ok(timesheetService.getAllTimesheet());
+        return ResponseEntity.ok(timesheetService.getAllTimesheets());
     }
 }
