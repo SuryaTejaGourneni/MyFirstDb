@@ -1,19 +1,20 @@
 package com.example.weeklytimesheets.controller;
 
-import com.example.weeklytimesheets.model.WeeklyTimesheet;
-import com.example.weeklytimesheets.service.WeeklyTimesheetService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.weeklytimesheets.model.WeeklyTimesheet;
+import com.example.weeklytimesheets.service.WeeklyTimesheetService;
 
 @RestController
 @RequestMapping("/api/timesheets")
@@ -51,7 +52,7 @@ public class WeeklyTimesheetController {
         try {
             LocalDate startDate = LocalDate.parse(start);
             LocalDate endDate = LocalDate.parse(end);
-            List<WeeklyTimesheet> result = service.getByEmployeeAndWeek(employeeId, startDate, endDate);
+            List<WeeklyTimesheet> result = service.findTimesheetsForWeek(employeeId, startDate, endDate);
             if (result == null || result.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
