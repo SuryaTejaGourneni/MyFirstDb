@@ -30,7 +30,7 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "args": [],
-            "jdkPath": "C:/Program Files/Java/jdk-17",
+            "jdkPath": "C:/Program Files/Java/jdk-23",
             "startupClass": "com.example.WeeklytimesheetsApplication"
         }
     ]
