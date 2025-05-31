@@ -1,14 +1,37 @@
 {
     "configurations": [
         {
+            "type": "cmake",
+            "request": "launch",
+            "name": "CMake: Configure project",
+            "cmakeDebugType": "configure",
+            "clean": false,
+            "configureAll": false
+        },
+        {
+            "type": "cmake",
+            "request": "launch",
+            "name": "CMake: Build project",
+            "cmakeDebugType": "configure",
+            "clean": false,
+            "configureAll": false
+        },
+        {
+            "type": "cmake",
+            "request": "launch",
+            "name": "CMake: Run project",
+            "cmakeDebugType": "configure",
+            "clean": false,
+            "configureAll": false
+        },
+        {
             "type": "java",
             "name": "Spring Boot-WeeklytimesheetsApplication<jobapp>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.example.weeklytimesheets.WeeklytimesheetsApplication",
-            "projectName": "jobapp",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "args": [],
+            "jdkPath": "C:/Program Files/Java/jdk-17",
+            "startupClass": "com.example.WeeklytimesheetsApplication"
         }
     ]
 }
